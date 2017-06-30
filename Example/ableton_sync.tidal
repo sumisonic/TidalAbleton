@@ -1,0 +1,15 @@
+import Sound.Tidal.Sumisonic.AbletonSync
+
+ableton <- abletonSyncStream 5002
+
+do
+  bps (130/60)
+  ableton
+    $ stack [
+      play 1 # nudge 0.012,
+      value "0 1" # target 0 # gate 1 # glide 1 # curve 0,
+      slow 2 $ value "0 1" # target 1 # gate 1 # glide 1 # curve 0.5
+    ]
+
+
+ableton $ play 0
